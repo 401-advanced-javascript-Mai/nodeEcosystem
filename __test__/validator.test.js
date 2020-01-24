@@ -23,7 +23,7 @@ describe('validator module performs basic validation of', () => {
     // if the input is array return false
   it('arrays', () => {
     let arr = ['a'];
-    expect(validator.isArray(arr)).toBeFalsy();
+    expect(validator.isObject(arr)).toBeTruthy();
   });
 
     // if the input is object return true
@@ -51,34 +51,62 @@ describe('validator module performs basic validation of', () => {
 describe('validator module performs complex validations', () => {
 
     it('validates if the input is object or not ', () => {
-        const susan = {
-          id:'123-45-6789',
-          name:'Susan McDeveloperson',
-          age: 37,
+        const mai = {
+          id:'28-1 lovely girl ',
+          name:'mai yusuf',
+          age: 25,
           children:[],
         }; 
         // let str = 'mai';
-        expect(validator.isObject(susan)).toBeTruthy();
+        expect(validator.isObject(mai)).toBeTruthy();
       });
     
+
+
   it('validates the presence of required object properties at any level', () => {
+    const mai = {
+        id:'28-1 lovely girl ',
+        name:'mai yusuf',
+        age: 25,
+        children:[],
+      }; 
     // i.e. does person.hair.color exist and have a good value, not just person.hair
-    expect(true).toBeFalsy();
+    /// checck if there ptoparrties which mean have keys and value for each one 
+    expect(validator.keysAreExists(mai)).toBeTruthy();
+    expect(validator.valueAreExists(mai)).toBeTruthy();
   });
 
   it('validates the proper types of object properties', () => {
+    const mai = {
+        id:'28-1 lovely girl ',
+        name:'mai yusuf',
+        age: 25,
+        children:[],
+      }; 
     // i.e. person.name must be a string, etc.
-    expect(true).toBeFalsy();
+    expect(validator.matchTheTypeRequried(mai)).toBeTruthy();
   });
 
   it('validates the types of values contained in an array', () => {
     // i.e. an array of all strings or numbers
-    expect(true).toBeFalsy();
+    const mai = {
+        id:'28-1 lovely girl ',
+        name:'mai yusuf',
+        age: 25,
+        children:[],
+      }; 
+    expect(validator.arrayIsValueOfOneProparties(mai)).toBeFalsy();
   });
 
   it('validates a value array against an approved list', () => {
+    const mai = {
+        id:'28-1 lovely girl ',
+        name:'mai yusuf',
+        age: 25,
+        children:[],
+      }; 
     // i.e. a string might only be allowed to be "yes" or "no"
-    expect(true).toBeFalsy();
+    expect(validator.arrayValueIsStringAndNotEmpty(mai)).toBeFalsy();
   });
 
   // TODO: Cover so, so many more cases
