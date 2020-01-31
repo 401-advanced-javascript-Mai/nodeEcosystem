@@ -1,4 +1,9 @@
 const validator = require('./lib/validator.js');
-console.log('hiiiiiiiiiiiiiii')
-validator.isValid();
-// console.log (validator.isValid())
+
+const mai = {
+  id:'28-1 lovely girl ',
+  name:'mai yusuf',
+  age: 25,
+  children:[],
+}; 
+console.log (validator.isObject(mai)) ;
